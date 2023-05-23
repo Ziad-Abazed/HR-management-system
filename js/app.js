@@ -5,7 +5,7 @@ let getID= Math.floor(1000 + Math.random() * 9000);
 if(arrIds.includes(getID)){
   generateEmployeeId();
 }else{
-
+  arrIds.push(getID);
   return getID;
 }
 
