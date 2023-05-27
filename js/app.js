@@ -12,9 +12,8 @@ if(arrIds.includes(getID)){
 
 }
 var allEmployees=[]
-function Employee(id ,fullName,department,level,image) {
+function Employee(fullName,department,level,image) {
     
-  this.id = id;
   this.fullName = fullName;
   this.catImage = image;
   this.department = department;
@@ -24,7 +23,9 @@ function Employee(id ,fullName,department,level,image) {
   allEmployees.push(this);
   
 }
-
+Employee.prototype.id=function(){
+  return generateEmployeeId();
+}
 
 Employee.prototype.salary=function(){
   var salaryRange;
@@ -42,54 +43,85 @@ Employee.prototype.salary=function(){
   var EmployeeSalary = Math.floor(
       salaryRange.min + Math.random() * (salaryRange.max - salaryRange.min + 1))
       var netSalary = EmployeeSalary - EmployeeSalary * 0.075;
-      return netSalary.toFixed(2);
+      return netSalary.toFixed(0);
 }
 
 
-let employee1=new Employee(generateEmployeeId(),"Ghazi Samer","Administration","Senior","https://thumbs.dreamstime.com/b/webcam-view-executive-manager-businessman-having-videocall-employees-216458723.jpg");
-let employee2=new Employee( generateEmployeeId(), 'Lana Ali', 'Finance',  'Senior','https://thumbs.dreamstime.com/b/portrait-happy-office-employee-working-laptop-looking-camera-109745321.jpg' )
-let employee3=new Employee( generateEmployeeId(), 'Tamara Ayoub', 'Marketing',  'Senior','https://thumbs.dreamstime.com/b/office-worker-pretty-young-sitting-41462649.jpg' )
-let employee4=new Employee( generateEmployeeId(), 'Safi Walid', 'Administration',  'Mid-Senior','https://thumbs.dreamstime.com/b/close-up-happy-bearded-man-hr-makes-good-first-impression-close-up-happy-bearded-man-hr-makes-good-first-impression-applicant-183172151.jpg' )
-let employee5=new Employee( generateEmployeeId(), 'Omar Zaid', 'Development',  'Senior','https://www.shutterstock.com/image-photo/portrait-smiling-millennial-arabic-businessman-260nw-1769759789.jpg' )
-let employee6=new Employee( generateEmployeeId(), 'Rana Saleh', 'Development',  'Junior','https://previews.123rf.com/images/wavebreakmediamicro/wavebreakmediamicro1111/wavebreakmediamicro111101651/11205201-busy-office-worker-in-her-office.jpg' )
-let employee7=new Employee( generateEmployeeId(), 'Hadi Ahmad', 'Finance',  'Mid-Senior','https://www.shutterstock.com/image-photo/successful-caucasian-smiling-man-shop-260nw-2079161422.jpg' )
-document.write("<table>")
-document.write("<thead>")
-document.write("<tr>")
-document.write("<th>#id</th>")
+let employee1=new Employee("Ghazi Samer","Administration","Senior","./assets/Ghazi.jpg");
+let employee2=new Employee(  'Lana Ali', 'Finance',  'Senior','./assets/Lana.jpg' )
+let employee3=new Employee(  'Tamara Ayoub', 'Marketing',  'Senior','./assets/Tamara.jpg' )
+let employee4=new Employee( 'Safi Walid', 'Administration',  'Mid-Senior','./assets/Safi.jpg' )
+let employee5=new Employee(  'Omar Zaid', 'Development',  'Senior','./assets/Omar.jpg' )
+let employee6=new Employee('Rana Saleh', 'Development',  'Junior','./assets/Rana.jpg' )
+let employee7=new Employee(  'Hadi Ahmad', 'Finance',  'Mid-Senior','./assets/Hadi.jpg' )
 
-document.write("<th> Name</th>")
-document.write("<th>Department</th>")
-document.write("<th>Level</th>")
-document.write("<th>image</th>")
-document.write("</tr>")
-document.write("</thead>")
-document.write("</table>")
+
+
+let main=document.getElementById("main");
+
+let flexdiv=document.createElement("div");
+
+flexdiv.className="flex-box";
+
+let Administrationdiv=document.createElement("div");
+
+Administrationdiv.className="Administrationtdiv";
+
+let Financediv=document.createElement("div");
+
+Financediv.className="Financediv";
+
+
+let Marketingdiv=document.createElement("div");
+
+Marketingdiv.className="Marketingdiv";
+
+
+let Developmentdiv=document.createElement("div");
+
+Developmentdiv.className="Developmentdiv";
+
+
+
 Employee.prototype.render=function(){
   console.log("Employee name: "+this.fullName)
   console.log("Department: "+this.department)
   console.log ("Employee salary: "+this.salary())
 
-  document.write("<table>")
-  document.write("<tbody>")
-  document.write("<tr>")
+  let carddiv=document.createElement("div");
+  carddiv.className="cards";
+  let img=document.createElement("img");
+  img.setAttribute("src",`${this.image}`);
+  let line1=document.createElement("p");
+  line1.textContent=`Name:${this.fullName} - ID: ${this.id()}`;
+  
+  let line2=document.createElement("p");
+  line2.textContent=`Department: ${this.department} - Level:${this.level}`;
+  console.log(line2)
+  let line3=document.createElement("p");
+  line3.textContent=`Salary:${this.salary()}`;
+  
+  
+  carddiv.appendChild(img)
+  
+  carddiv.appendChild(line1)
+  carddiv.appendChild(line2)
+  carddiv.appendChild(line3)
 
-  document.write(`<td> ${this.id}</td>`)
-  document.write(`<td> ${this.fullName}</td>`)
-  document.write(`<td> ${this.department}</td>`)
-  document.write(`<td> ${this.level}</td>`)
-  document.write(`<td>  <img src=${this.image} height=100px width=100px></td>`)
-
-
-
-  document.write("</tr>")
-
-  document.write("</tbody>")
-  document.write("</table>")
+  switch(this.department){
+    case 'Administration':Administrationdiv.appendChild(carddiv);break;
+    case 'Finance':Financediv.appendChild(carddiv);break;
+    case 'Marketing':Marketingdiv.appendChild(carddiv);break;
+    case 'Development':Developmentdiv.appendChild(carddiv);break;
+  }
 }
 
 
-
+flexdiv.appendChild(Administrationdiv)
+flexdiv.appendChild(Financediv)
+flexdiv.appendChild(Marketingdiv)
+flexdiv.appendChild(Developmentdiv)
+main.appendChild(flexdiv);
 for (let i = 0; i < allEmployees.length; i++){
 allEmployees[i].render();
 }
