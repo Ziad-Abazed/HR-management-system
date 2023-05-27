@@ -1,7 +1,7 @@
 body {
-  background-color: #111111;
-  font-family: sans-serif;
-  color: white;
+  background-color: white;
+  font-family: "Audiowide", sans-serif;
+  width: 100%;
 
 
 
@@ -9,18 +9,22 @@ body {
 
 nav {
   height: 70px;
-  width: 100%;
-  background-color: #252525;
-margin-bottom: 100px;
-     
+  width: 97%;
+  background-color: black;
+ 
+  padding: 10px;
+  margin: auto;
+
+  margin-bottom: 50px;
+
 }
 
-nav > .nav-header {
+nav>.nav-header {
   display: inline;
 
 }
 
-nav > .nav-header > .nav-title {
+nav>.nav-header>.nav-title {
   display: inline-block;
   font-size: 22px;
 
@@ -32,74 +36,102 @@ nav > .nav-header > .nav-title {
 .nav-title img {
   margin-top: 0px;
   margin-right: 10px;
-float: left;
+  float: left;
 
-   display: inline;
-     
+  display: inline;
+
 }
 
 .nav-title p {
-   display: inline;
+  display: inline;
 
 }
 
-nav > .nav-links {
+nav>.nav-links {
   display: inline;
   float: right;
   font-size: 18px;
- 
+
 }
 
-nav > .nav-links > a {
+nav>.nav-links>a {
   display: inline-block;
   padding: 13px 10px 13px 10px;
-color:white;
+  color: white;
   text-decoration: none;
-  
+
 
 }
-main{
-  width: 100%;
-}
 
-table {
-  width: 70%;
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+main {
+  width: 80%;
   margin: auto;
-  background-color: #252525;
 }
 
-table thead tr {
-  background-color:  blue;
-  color: #ffffff;
-  text-align: left;
+.flex-box {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  align-content: center;
+  text-align: center;
 }
 
-
-table th,
-table td {
-  padding: 12px 15px;
+.Administrationtdiv {
+  width: 25%;
 }
 
-h1{
+.Financediv {
+  width: 25%;
+}
+
+.Marketingdiv {
+  width: 25%;
+}
+
+.Developmentdiv {
+  width: 25%;
+
+}
+
+.cards {
+  width: 100%;
+  margin-bottom: 5px;
+  height: 370px;
+  align-items: center;
+  text-align: center;
+  padding-top: 5px;
+  padding: auto;
+
+  border-radius: 10px;
+  background-color: #477D57;
+
+}
+
+.cards>img {
+  width: 85%;
+  height: 200px;
+}
+
+h1 {
   text-align: center;
   margin-bottom: 20px;
 }
-footer{
+
+footer {
   padding-top: 10px;
-  margin-bottom: 0%;
-  width: 100%;
+  margin-bottom: 0px;
+  width: 97%;
   height: 120px;
   text-align: center;
-  background-color: #252525;
+  background-color: black;
   margin-top: 10%;
+  color: white;
+  margin: auto;
 }
 
-a{
+a {
+
+  padding: 10px;
   text-decoration: none;
+font-size: larger;
 }
