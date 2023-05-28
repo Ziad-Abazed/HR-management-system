@@ -23,7 +23,7 @@ function Employee(fullName,department,level,image) {
   allEmployees.push(this);
   
 }
-Employee.prototype.Id=function(){
+Employee.prototype.id=function(){
   return generateEmployeeId();
 }
 
@@ -43,7 +43,7 @@ Employee.prototype.salary=function(){
   var EmployeeSalary = Math.floor(
       salaryRange.min + Math.random() * (salaryRange.max - salaryRange.min + 1))
       var netSalary = EmployeeSalary - EmployeeSalary * 0.075;
-      return netSalary.toFixed(2);
+      return netSalary.toFixed(0);
 }
 
 
@@ -62,6 +62,7 @@ document.write("<th>#id</th>")
 document.write("<th> Name</th>")
 document.write("<th>Department</th>")
 document.write("<th>Level</th>")
+document.write("<th>salary</th>")
 document.write("<th>image</th>")
 document.write("</tr>")
 document.write("</thead>")
@@ -79,6 +80,7 @@ Employee.prototype.render=function(){
   document.write(`<td> ${this.fullName}</td>`)
   document.write(`<td> ${this.department}</td>`)
   document.write(`<td> ${this.level}</td>`)
+  document.write(`<td> ${this.salary()}</td>`)
   document.write(`<td>  <img src=${this.image} height=100px width=100px></td>`)
 
 
@@ -94,6 +96,9 @@ Employee.prototype.render=function(){
 for (let i = 0; i < allEmployees.length; i++){
 allEmployees[i].render();
 }
+
+
+
 
 
 
